@@ -16,11 +16,15 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <header class="flex p-4 items-center justify-center">
+    <header class="flex p-4 items-center justify-center md:p-24">
       <h1 class="text-xl source-code-pro">
         owozsh
       </h1>
     </header>
-    <%= @inner_content %>
+    <div class="flex flex-col w-full items-center">
+      <main class="flex flex-col w-full md:w-10/12 lg:w-1/2 p-4 items-center border border-solid border-stone-200">
+        <%= @inner_content %>
+      </main>
+    </div>
   </body>
 </html>
