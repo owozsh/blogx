@@ -60,10 +60,12 @@ defmodule BlogWeb.Router do
   ## Authentication routes
 
   scope "/", BlogWeb do
+    pipe_through [:browser, :require_authenticated_admin]
+  end
+
+  scope "/", BlogWeb do
     pipe_through [:browser, :redirect_if_admin_is_authenticated]
 
-    get "/admins/register", AdminRegistrationController, :new
-    post "/admins/register", AdminRegistrationController, :create
     get "/admins/log_in", AdminSessionController, :new
     post "/admins/log_in", AdminSessionController, :create
     get "/admins/reset_password", AdminResetPasswordController, :new
