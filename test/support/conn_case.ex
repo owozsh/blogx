@@ -39,12 +39,12 @@ defmodule BlogWeb.ConnCase do
   @doc """
   Setup helper that registers and logs in admins.
 
-      setup :register_and_log_in_admin
+      setup :log_in_admin
 
   It stores an updated connection and a registered admin in the
   test context.
   """
-  def register_and_log_in_admin(%{conn: conn}) do
+  def log_in_admin(%{conn: conn}) do
     admin = Blog.BlogDashboardFixtures.admin_fixture()
     %{conn: log_in_admin(conn, admin), admin: admin}
   end

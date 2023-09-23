@@ -4,7 +4,7 @@ defmodule BlogWeb.AdminSettingsControllerTest do
   alias Blog.BlogDashboard
   import Blog.BlogDashboardFixtures
 
-  setup :register_and_log_in_admin
+  setup :log_in_admin
 
   describe "GET /admins/settings" do
     test "renders settings page", %{conn: conn} do
@@ -95,7 +95,11 @@ defmodule BlogWeb.AdminSettingsControllerTest do
 
       token =
         extract_admin_token(fn url ->
-          BlogDashboard.deliver_update_email_instructions(%{admin | email: email}, admin.email, url)
+          BlogDashboard.deliver_update_email_instructions(
+            %{admin | email: email},
+            admin.email,
+            url
+          )
         end)
 
       %{token: token, email: email}

@@ -7,6 +7,7 @@ defmodule Blog.BlogDashboard do
   alias Blog.Repo
 
   alias Blog.BlogDashboard.{Admin, AdminToken, AdminNotifier}
+  alias Blog.Post
 
   ## Database getters
 
@@ -304,7 +305,11 @@ defmodule Blog.BlogDashboard do
       when is_function(reset_password_url_fun, 1) do
     {encoded_token, admin_token} = AdminToken.build_email_token(admin, "reset_password")
     Repo.insert!(admin_token)
-    AdminNotifier.deliver_reset_password_instructions(admin, reset_password_url_fun.(encoded_token))
+
+    AdminNotifier.deliver_reset_password_instructions(
+      admin,
+      reset_password_url_fun.(encoded_token)
+    )
   end
 
   @doc """
@@ -349,5 +354,11 @@ defmodule Blog.BlogDashboard do
       {:ok, %{admin: admin}} -> {:ok, admin}
       {:error, :admin, changeset, _} -> {:error, changeset}
     end
+  end
+
+  def create_post(attrs) do
+    %Post{}
+    |> Post.changeset(attrs)
+    |> Repo.insert()
   end
 end
