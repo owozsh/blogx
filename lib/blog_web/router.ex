@@ -2,6 +2,7 @@ defmodule BlogWeb.Router do
   use BlogWeb, :router
 
   import BlogWeb.AdminAuth
+  alias BlogWeb.AdminDashboardLive
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -61,6 +62,8 @@ defmodule BlogWeb.Router do
 
   scope "/", BlogWeb do
     pipe_through [:browser, :require_authenticated_admin]
+
+    live "/admin_dashboard", AdminDashboardLive
   end
 
   scope "/", BlogWeb do
@@ -77,6 +80,8 @@ defmodule BlogWeb.Router do
   scope "/", BlogWeb do
     pipe_through [:browser, :require_authenticated_admin]
 
+    get "/admins/register", AdminRegistrationController, :new
+    post "/admins/register", AdminRegistrationController, :create
     get "/admins/settings", AdminSettingsController, :edit
     put "/admins/settings", AdminSettingsController, :update
     get "/admins/settings/confirm_email/:token", AdminSettingsController, :confirm_email
