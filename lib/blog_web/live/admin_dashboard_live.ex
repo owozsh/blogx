@@ -12,7 +12,7 @@ defmodule BlogWeb.AdminDashboardLive do
               <div class="flex gap-3">
                 <a class="hover:underline text-blue-500 px-2" href="#" >View</a>
                 <a class="hover:underline text-blue-500 px-2" href="#" >Edit</a>
-                <a class="hover:underline text-red-500 text-white px-2" href="#" >Delete</a>
+                <a class="hover:underline text-red-500 px-2" href="#" >Delete</a>
               </div>
           </div>
         <% end %>
@@ -22,6 +22,6 @@ defmodule BlogWeb.AdminDashboardLive do
   end
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :posts, Blog.Posts.PostList.all())}
+    {:ok, assign(socket, :posts, Blog.Posts.PostList.all_published())}
   end
 end
