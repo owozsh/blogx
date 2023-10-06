@@ -62,7 +62,8 @@ defmodule BlogWeb.Router do
   scope "/", BlogWeb do
     pipe_through [:browser, :require_authenticated_admin]
 
-    live "/admin_dashboard", AdminDashboardLive
+    live "/admin_dashboard", AdminDashboard.Home
+    live "/admin_dashboard/posts/create", AdminDashboard.Posts.Create
   end
 
   scope "/", BlogWeb do

@@ -1,10 +1,11 @@
-defmodule BlogWeb.AdminDashboardLive do
+defmodule BlogWeb.AdminDashboard.Home do
   use BlogWeb, :live_view
 
   def render(assigns) do
     ~H"""
     <div>
       <h1 class="mb-3 font-xl font-bold text-center">Admin Dashboard</h1>
+      <%= live_patch "Create Post", to: Routes.live_path(@socket, BlogWeb.AdminDashboard.Posts.Create), class: "text-blue-500 hover:underline" %>
       <div class="flex flex-col gap-3">
         <%= for post <- @posts do %>
           <div class="p-3 border border-solid border-stone-200 flex items-center justify-between">
