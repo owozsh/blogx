@@ -5,8 +5,8 @@
 
   packages = [
     pkgs.git
-    pkgs.elixir_1_16
-    pkgs.erlang_26
+    pkgs.elixir
+    pkgs.erlang
     pkgs.postgresql_16
     pkgs.inotify-tools
   ];
@@ -42,7 +42,7 @@
 
   enterTest = ''
     echo "Running tests"
-    elixir -v | grep "26"
+    elixir -v | grep "25"
     elixir -v | grep "1.16"
   '';
 }

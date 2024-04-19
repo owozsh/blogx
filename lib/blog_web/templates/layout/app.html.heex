@@ -1,5 +1,11 @@
-<main class="container">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
-</main>
+<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<aside class="flex flex-col w-72 p-4 border-r border-r-gray-200">
+  <h3 class="text-xl mb-4">owozsh</h3>
+  <ul>
+    <li>about</li>
+    <li>posts</li>
+    <li>color schemes</li>
+  </ul>
+</aside>
+<main class="flex flex-col p-10"><%= @inner_content %></main>
