@@ -26,6 +26,10 @@
     iex -S mix
   '';
 
+  scripts.up.exec = ''
+    devenv up
+  '';
+
   enterShell = ''
     hello
     elixir -v
