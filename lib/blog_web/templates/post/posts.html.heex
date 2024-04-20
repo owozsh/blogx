@@ -1,0 +1,5 @@
+<ul>
+<%= for post <- @posts do %>
+    <li class="list-disc"><%= post.title %>, <%= Blog.DateUtils.full(post.inserted_at) %></li>
+<% end %>
+</ul>
